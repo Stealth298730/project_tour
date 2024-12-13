@@ -1,6 +1,9 @@
 from flask import Flask, request, redirect, url_for, render_template
 
 from data import data 
+from data.tours_to_db import data_to_db
+from data.base import Session ,create_db
+from data.models import Tour ,Reserve
 
 app = Flask(__name__)
 DEPARTURES = data.departures
@@ -29,4 +32,6 @@ def departure(dep):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    create_db
+    data_to_db()
+   # app.run(debug=True)
